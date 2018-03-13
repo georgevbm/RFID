@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.george.apprfid.Activity.ListarEtiquetaActivity">
+
+    <include
+        android:id="@+id/ToolbarTop"
+        layout="@layout/tool_bar" />
+
+    <ListView
+        android:id="@+id/lstEtiquetas"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/ToolbarTop"
+        android:paddingBottom="16dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:layout_above="@+id/Toolbar_TEtiqueta">
+
+    </ListView>
+
+    <include
+        android:id="@+id/Toolbar_TEtiqueta"
+        layout="@layout/toolbar_etiqueta" />
+</RelativeLayout>
