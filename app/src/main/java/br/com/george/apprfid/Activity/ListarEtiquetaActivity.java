@@ -96,7 +96,7 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
         setContentView(R.layout.activity_listar_etiqueta);
 
         if (getIntent().hasExtra("addressDispositivo")) {
-            leitor = new R900(this, mHandler, this);
+            leitor = new R900(ListarEtiquetaActivity.this, mHandler, this);
 
             String addressDispositivo = getIntent().getExtras().getString("addressDispositivo");
             leitor.conectar(addressDispositivo);
@@ -138,12 +138,15 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
             });
             //endregion
         }
+
+        onNotifyBtDataRecv();
     }
 
 
     //region EVENTOS DA TELA
     @Override
     public void onNotifyBtDataRecv() {
+        Toast.makeText(ListarEtiquetaActivity.this, "onNotify", Toast.LENGTH_SHORT).show();
         if (leitor == null)
             return;
 

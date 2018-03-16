@@ -69,6 +69,7 @@ public class R900 extends Leitor implements ILeitor {
             return;
 
         final String CMD = param.toLowerCase();
+        int teste = CMD.indexOf("$trigger=1");
 
         if (CMD.indexOf("^") == 0 || CMD.indexOf("$") == 0
                 || CMD.indexOf("ok") == 0 || CMD.indexOf("err") == 0
