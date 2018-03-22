@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
 import br.com.george.apprfid.R;
 
 public class MainActivity extends AppCompatActivity {
