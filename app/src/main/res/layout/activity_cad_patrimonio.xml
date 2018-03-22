@@ -72,51 +72,12 @@
                     android:layout_height="fill_parent"
                     android:hint="Digite a tag RFID" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:paddingTop="10dp"
-                    android:text="Estado"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/txtEstadoPatrimonio"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:hint="Informe a situação do objeto" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:paddingTop="10dp"
-                    android:text="Local"
-                    android:textSize="20sp" />
-
-                <Spinner
-                    android:id="@+id/cboLocalPatrimonio"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:paddingTop="10dp"
-                    android:text="Responsável"
-                    android:textSize="20sp" />
-
-                <Spinner
-                    android:id="@+id/cboResponsavel"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:paddingBottom="10dp" />
-
                 <CheckBox
                     android:id="@+id/chkAtivoPatrimonio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ativo"
                     android:textSize="20sp" />
-
 
             </LinearLayout>
 

@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-import br.com.george.apprfid.Database.Database;
 import br.com.george.apprfid.Model.Patrimonio;
 import br.com.george.apprfid.RFID.DotR900.OnBtEventListener;
 import br.com.george.apprfid.RFID.DotR900.R900RecvPacketParser;
@@ -344,14 +343,10 @@ public class Leitor {
     protected void atualizarListaTag(final String param) {
         Patrimonio patrimonio = null;
 
-        Database db = new Database(activity.getApplicationContext());
-
         if (param == null || param.length() <= 4)
             return;
 
         final String tagRFId = param.substring(0, param.length() - 4);
-
-        patrimonio = db.buscarPatrimonioTag(tagRFId);
 
         if (patrimonio == null) {
             patrimonio = new Patrimonio();

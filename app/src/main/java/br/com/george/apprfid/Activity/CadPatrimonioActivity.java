@@ -9,27 +9,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Spinner;
-
-import java.util.List;
 
 import br.com.george.apprfid.Database.Database;
-import br.com.george.apprfid.Model.Local;
 import br.com.george.apprfid.Model.Patrimonio;
-import br.com.george.apprfid.Model.Responsavel;
 import br.com.george.apprfid.R;
 
 public class CadPatrimonioActivity extends AppCompatActivity {
     private EditText txtDescricao;
     private EditText txtIdentificacao;
-    private EditText txtEstado;
     private EditText txtNome;
-    private Spinner cboLocal;
-    private Spinner cboResponsavel;
     private CheckBox chkAtivo;
     private Database db;
     private Patrimonio patrimonio;
@@ -42,28 +33,11 @@ public class CadPatrimonioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cad_patrimonio);
 
-        List<Local> listaLocal;
-        List<Responsavel> listaResponsavel;
-
-        listaLocal = db.buscarLocais();
-        listaResponsavel = db.buscarResponsaveis();
-
         txtNome = (EditText) findViewById(R.id.txtNomePatrimonio);
         txtDescricao = (EditText) findViewById(R.id.txtDescricaoPatrimonio);
         txtIdentificacao = (EditText) findViewById(R.id.txtIdentificacaoPatrimonio);
-        txtEstado = (EditText) findViewById(R.id.txtEstadoPatrimonio);
-        cboLocal = (Spinner) findViewById(R.id.cboLocalPatrimonio);
-        cboResponsavel = (Spinner) findViewById(R.id.cboResponsavel);
         chkAtivo = (CheckBox) findViewById(R.id.chkAtivoPatrimonio);
         chkAtivo.setChecked(true);
-
-        ArrayAdapter<Local> adapterLocal = new ArrayAdapter<Local>(this, android.R.layout.simple_dropdown_item_1line, listaLocal);
-        cboLocal.setAdapter(adapterLocal);
-
-        ArrayAdapter<Responsavel> adapterResponsavel = new ArrayAdapter<Responsavel>(this,
-                android.R.layout.simple_dropdown_item_1line, listaResponsavel);
-
-        cboResponsavel.setAdapter(adapterResponsavel);
 
         if (getIntent().hasExtra("patrimonio")) {
             patrimonio = (Patrimonio) getIntent().getExtras().getSerializable("patrimonio");
@@ -71,14 +45,12 @@ public class CadPatrimonioActivity extends AppCompatActivity {
             txtNome.setText(patrimonio.getNome());
             txtDescricao.setText(patrimonio.getDescricao());
             txtIdentificacao.setText(patrimonio.getIdentificacao());
-            txtEstado.setText(patrimonio.getEstado());
             if (patrimonio.getStatusRegistro() == true)
                 chkAtivo.setChecked(true);
             else
                 chkAtivo.setChecked(false);
 
-            cboLocal.setId(patrimonio.getLocal().getId());
-            cboResponsavel.setId(patrimonio.getResponsavel().getId());
+
         }
 
         if (getIntent().hasExtra("tag")) {
@@ -112,21 +84,12 @@ public class CadPatrimonioActivity extends AppCompatActivity {
                 patrimonio.setNome(txtNome.getText().toString());
                 patrimonio.setIdentificacao(txtIdentificacao.getText().toString());
                 patrimonio.setDescricao(txtDescricao.getText().toString());
-                patrimonio.setEstado(txtEstado.getText().toString());
 
 //                patrimonio.setDataEntrada(date);
                 if (chkAtivo.isChecked())
                     patrimonio.setStatusRegistro(true);
                 else
                     patrimonio.setStatusRegistro(false);
-
-                Local local = (Local) cboLocal.getSelectedItem();
-
-                patrimonio.setLocal(local);
-
-                Responsavel responsavel = (Responsavel) cboResponsavel.getSelectedItem();
-
-                patrimonio.setResponsavel(responsavel);
 
                 if (patrimonio.getCod() == 0) {
                     patrimonio.setEnviarBancoOnline(true);
@@ -171,7 +134,6 @@ public class CadPatrimonioActivity extends AppCompatActivity {
         txtNome.setText("");
         txtDescricao.setText("");
         txtIdentificacao.setText("");
-        txtEstado.setText("");
         chkAtivo.setChecked(true);
     }
 

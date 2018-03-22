@@ -5,15 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.List;
 
-import br.com.george.apprfid.Database.DAO.DepartamentoDao;
-import br.com.george.apprfid.Database.DAO.LocalDao;
 import br.com.george.apprfid.Database.DAO.PatrimonioDao;
-import br.com.george.apprfid.Database.DAO.ResponsavelDao;
-import br.com.george.apprfid.Model.Departamento;
-import br.com.george.apprfid.Model.Local;
 import br.com.george.apprfid.Model.Patrimonio;
-import br.com.george.apprfid.Model.Responsavel;
-
 
 public class Database {
     private SQLiteDatabase db;
@@ -22,84 +15,6 @@ public class Database {
         DatabaseHelper cDb = new DatabaseHelper(ctx);
         db = cDb.getWritableDatabase();
     }
-
-    //region Departamento
-    public void inserirDepartamento(Departamento departamento) {
-        new DepartamentoDao(db).inserir(departamento);
-    }
-
-    public void atualizarDepartamento(Departamento departamento) {
-        new DepartamentoDao(db).atualizar(departamento);
-    }
-
-    public void deletarDepartamento(Departamento departamento) {
-        new DepartamentoDao(db).deletar(departamento);
-    }
-
-    public List<Departamento> buscarDepartamentos() {
-        return new DepartamentoDao(db).buscarTodos();
-    }
-
-    public Departamento buscarDepartamento(int id) {
-        return new DepartamentoDao(db).buscarPorId(id);
-    }
-
-    public void deletarTodosDepartamentos() {
-        new DepartamentoDao(db).deletarTodos();
-    }
-    //endregion
-
-    //region Local
-    public void inserirLocal(Local local) {
-        new LocalDao(db).inserir(local);
-    }
-
-    public void atualizarLocal(Local local) {
-        new LocalDao(db).atualizar(local);
-    }
-
-    public void deletarLocal(Local local) {
-        new LocalDao(db).deletar(local);
-    }
-
-    public List<Local> buscarLocais() {
-        return new LocalDao(db).buscarTodos();
-    }
-
-    public Local buscarLocal(int id) {
-        return new LocalDao(db).buscarPorId(id);
-    }
-
-    public void deletarTodosLocais() {
-        new LocalDao(db).deletarTodos();
-    }
-    //endregion
-
-    //region Responsavel
-    public void inserirResponsavel(Responsavel responsavel) {
-        new ResponsavelDao(db).inserir(responsavel);
-    }
-
-    public void atualizarResponsavel(Responsavel responsavel) {
-        new ResponsavelDao(db).atualizar(responsavel);
-    }
-
-    public void deletarResponsavel(Responsavel responsavel) {
-        new ResponsavelDao(db).deletar(responsavel);
-    }
-
-    public List<Responsavel> buscarResponsaveis() {
-        return new ResponsavelDao(db).buscarTodos();
-    }
-
-    public Responsavel buscarResponsavel(int id) {
-        return new ResponsavelDao(db).buscarPorId(id);
-    }
-
-    public void deletarTodosResponsaveis() {
-        new ResponsavelDao(db).deletarTodos();
-    }
-    //endregion
 
     //region Patrimonio
     public void inserirPatrimonio(Patrimonio patrimonio) {

@@ -13,13 +13,13 @@ import java.util.List;
 
 import br.com.george.apprfid.R;
 
-public class BluetoothListItem extends BaseAdapter {
+public class BluetoothAdapter extends BaseAdapter {
     private List<BluetoothDevice> dispostivos;
     private LayoutInflater inflater;
     private Context ctx;
     private ImageView imgBluetooth;
 
-    public BluetoothListItem(Context ctx, List<BluetoothDevice> dispositivos) {
+    public BluetoothAdapter(Context ctx, List<BluetoothDevice> dispositivos) {
         this.dispostivos = dispositivos;
         this.ctx = ctx;
         inflater = LayoutInflater.from(ctx);

@@ -32,22 +32,7 @@
             android:text="Iniciar Leitor" />
 
 
-        <Button
-            android:id="@+id/btnPatrimonio"
-            android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/tool_bar"
-            android:layout_weight="1"
-            android:text="Patrimonio" />
     </LinearLayout>
-
-
-    <include
-        android:id="@+id/ToolbarBootom"
-
-        layout="@layout/toolbar_bottom" />
 
 
 </RelativeLayout>

@@ -26,26 +26,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "Nome TEXT);");
         //endregion
 
-        //region TABELA: Local
-        db.execSQL("CREATE TABLE Local " +
-                "(" +
-                "_id INTEGER, " +
-                "Departamento INTEGER," +
-                "Nome TEXT," +
-                "Descricao TEXT, " +
-                "FOREIGN KEY (departamento) REFERENCES Departamento(_id)" +
-                ");");
-        //endregion
-
-        //region TABELA: Responsável
-        db.execSQL("CREATE TABLE Responsavel (" +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "Siape TEXT, " +
-                "Nome TEXT, " +
-                "Telefone TEXT, " +
-                "Funcao TEXT);");
-        //endregion
-
         //region TABELA: Patrimonio
         db.execSQL("CREATE TABLE Patrimonio" +
                 "(" +
@@ -54,8 +34,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "Descricao TEXT," +
                 "Identificacao TEXT," +
                 "Estado TEXT, DataEntrada TEXT," +
-                "Local INTEGER," +
-                "Responsavel INTEGER," +
                 "statusRegistro TEXT," +
                 "enviarBancoOnline TEXT," +
                 "atualizarBancoOnline TEXT," +

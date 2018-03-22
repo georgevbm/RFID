@@ -59,7 +59,7 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
     public static SelectMask SelMask = new SelectMask();
     public static boolean UseMask = false;
     private TextView lblTotalTags;
-    private ListView lstPatrimonio;
+    private ListView lstTag;
     private BaseAdapter mAdapterTag;
     private Toolbar mToolbar;
     private Patrimonio patrimonio;
@@ -103,13 +103,13 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
 
             lblTotalTags = (TextView) findViewById(R.id.lblTotalTags);
             lblTotalTags.setText("0");
-            lstPatrimonio = (ListView) findViewById(R.id.lstEtiquetas);
+            lstTag = (ListView) findViewById(R.id.lstEtiquetas);
 
             mAdapterTag = new TagAdapter(getApplicationContext(), leitor.getListaPatrimonio());
 
-            lstPatrimonio.setAdapter(mAdapterTag);
+            lstTag.setAdapter(mAdapterTag);
 
-            lstPatrimonio.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            lstTag.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(ListarEtiquetaActivity.this, CadPatrimonioActivity.class);
@@ -146,13 +146,11 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
     //region EVENTOS DA TELA
     @Override
     public void onNotifyBtDataRecv() {
-        Toast.makeText(ListarEtiquetaActivity.this, "onNotify", Toast.LENGTH_SHORT).show();
         if (leitor == null)
             return;
 
         try {
             leitor.leitura();
-            //mHandler.sendEmptyMessage(MSG_REFRESH_LIST_TAG);
         }
         catch (Exception ex) {
             Log.d("ERRO", ex.getMessage());
@@ -172,12 +170,6 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
     //endregion
 
     //region MENSAGENS DO HANDLER
-    private void setEnabledBtnDisconnect(boolean bEnable) {
-        if (bEnable)
-            mHandler.sendEmptyMessageDelayed(MSG_ENABLE_DISCONNECT, 50);
-        else
-            mHandler.sendEmptyMessageDelayed(MSG_DISABLE_DISCONNECT, 50);
-    }
 
     private void setEnabledLinkCtrl(boolean bEnable) {
         if (bEnable)
@@ -283,11 +275,6 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
         btnSeleciona.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ListarEtiquetaActivity.this, ListarPatrimonioActivity.class);
-                intent.putExtra("tag", patrimonio.getIdentificacao());
-                startActivity(intent);
-
-                dialog.dismiss();
             }
         });
 

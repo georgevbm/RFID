@@ -7,9 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.george.apprfid.Model.Local;
 import br.com.george.apprfid.Model.Patrimonio;
-import br.com.george.apprfid.Model.Responsavel;
 
 
 public class PatrimonioDao {
@@ -30,10 +28,7 @@ public class PatrimonioDao {
             val.put("nome", patrimonio.getNome());
             val.put("dataEntrada", String.valueOf(patrimonio.getDataEntrada()));
             val.put("descricao", patrimonio.getDescricao());
-            val.put("estado", patrimonio.getEstado());
             val.put("identificacao", patrimonio.getIdentificacao());
-            val.put("local", patrimonio.getLocal().getId());
-            val.put("responsavel", patrimonio.getResponsavel().getId());
 
             if (patrimonio.getStatusRegistro() == true)
                 val.put("statusRegistro", "t");
@@ -57,10 +52,7 @@ public class PatrimonioDao {
         val.put("_cod", patrimonio.getCod());
         val.put("nome", patrimonio.getNome());
         val.put("descricao", patrimonio.getDescricao());
-        val.put("estado", patrimonio.getEstado());
         val.put("identificacao", patrimonio.getIdentificacao());
-        val.put("local", patrimonio.getLocal().getId());
-        val.put("responsavel", patrimonio.getResponsavel().getId());
 
         if (patrimonio.getStatusRegistro() == true)
             val.put("statusRegistro", "t");
@@ -82,8 +74,6 @@ public class PatrimonioDao {
     }
 
     public List<Patrimonio> buscarTodos() {
-        LocalDao localDao = new LocalDao(db);
-        ResponsavelDao responsavelDao = new ResponsavelDao(db);
         List<Patrimonio> patrimonios = new ArrayList<>();
 
         Cursor cursor = db.query("Patrimonio", colunas, null, null, null, null, "dataEntrada ASC");
@@ -106,8 +96,6 @@ public class PatrimonioDao {
     }
 
     public List<Patrimonio> buscarTodosParaInserir() {
-        LocalDao localDao = new LocalDao(db);
-        ResponsavelDao responsavelDao = new ResponsavelDao(db);
         List<Patrimonio> patrimonios = new ArrayList<>();
 
         Cursor cursor = db.query("Patrimonio", colunas, "enviarBancoOnline = 1", null, null, null, "dataEntrada ASC");
@@ -125,8 +113,6 @@ public class PatrimonioDao {
     }
 
     public List<Patrimonio> buscarTodosParaAlterar() {
-        LocalDao localDao = new LocalDao(db);
-        ResponsavelDao responsavelDao = new ResponsavelDao(db);
         List<Patrimonio> patrimonios = new ArrayList<>();
 
         Cursor cursor = db.query("Patrimonio", colunas, "atualizarBancoOnline = 1", null, null, null, "dataEntrada ASC");
@@ -158,11 +144,7 @@ public class PatrimonioDao {
 
     //region iniciarPatrimonio: DEFINE O CURSOR AO OBJETO PATRIMONIO
     private Patrimonio iniciarPatrimonio(Cursor cursor, boolean adicionarId) {
-        Patrimonio patrimonio = new Patrimonio();
-        Local local;
-        Responsavel responsavel;
-        LocalDao localDao = new LocalDao(db);
-        ResponsavelDao responsavelDao = new ResponsavelDao(db);
+        Patrimonio patrimonio = new Patrimonio();;
 
         if (adicionarId)
             patrimonio.setCod(cursor.getInt(0));
@@ -170,14 +152,6 @@ public class PatrimonioDao {
         patrimonio.setNome(cursor.getString(1));
         patrimonio.setDescricao(cursor.getString(2));
         patrimonio.setIdentificacao(cursor.getString(4));
-        patrimonio.setEstado(cursor.getString(5));
-
-        local = localDao.buscarPorId(cursor.getInt(6));
-
-        patrimonio.setLocal(local);
-
-        responsavel = responsavelDao.buscarPorId(cursor.getInt(7));
-        patrimonio.setResponsavel(responsavel);
 
         if (cursor.getString(8).equals("t"))
             patrimonio.setStatusRegistro(true);

@@ -61,7 +61,6 @@ public class TagAdapter extends BaseAdapter {
                 lblLocalizacao.setVisibility(View.GONE);
             } else {
                 lblPatrimonio.setText(patrimonio.getNome());
-                lblLocalizacao.setText(patrimonio.getLocal().getNome());
                 lblDescPatrimonio.setText(patrimonio.getDescricao());
                 lblDescPatrimonio.setVisibility(View.VISIBLE);
                 lblLocalizacao.setVisibility(View.VISIBLE);

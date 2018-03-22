@@ -1,6 +1,5 @@
 package br.com.george.apprfid.Model;
 
-import br.com.george.apprfid.Model.Local;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,10 +10,7 @@ public class Patrimonio implements Serializable {
     private String nome;
     private String descricao;
     private String identificacao;
-    private String estado;
     private Date dataEntrada;
-    private Local local;
-    private Responsavel responsavel;
     private Boolean statusRegistro;
     private boolean enviarBancoOnline;
     private boolean atualizarBancoOnline;
@@ -36,36 +32,12 @@ public class Patrimonio implements Serializable {
         this.identificacao = identificacao;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public Date getDataEntrada() {
         return dataEntrada;
     }
 
     public void setDataEntrada(Date dataEntrada) {
         this.dataEntrada = dataEntrada;
-    }
-
-    public Local getLocal() {
-        return local;
-    }
-
-    public void setLocal(Local local) {
-        this.local = local;
-    }
-
-    public Responsavel getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(Responsavel responsavel) {
-        this.responsavel = responsavel;
     }
 
     public int getCod() {
