@@ -13,13 +13,6 @@
         android:textColor="#FFF" />
 
     <Button
-        android:id="@+id/btnSelecionarEtiqueta"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Selecionar Etiqueta"
-        android:textColor="#FFF" />
-
-    <Button
         android:id="@+id/btnCancelarPatrimonio"
         android:layout_width="200dp"
         android:layout_height="wrap_content"

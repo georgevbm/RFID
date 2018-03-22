@@ -18,14 +18,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //region TABELA: Departamento
-        db.execSQL("CREATE TABLE Departamento" +
-                "(" +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "Sigla TEXT, " +
-                "Nome TEXT);");
-        //endregion
-
         //region TABELA: Patrimonio
         db.execSQL("CREATE TABLE Patrimonio" +
                 "(" +

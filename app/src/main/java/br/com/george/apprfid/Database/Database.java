@@ -2,9 +2,7 @@ package br.com.george.apprfid.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-
 import java.util.List;
-
 import br.com.george.apprfid.Database.DAO.PatrimonioDao;
 import br.com.george.apprfid.Model.Patrimonio;
 

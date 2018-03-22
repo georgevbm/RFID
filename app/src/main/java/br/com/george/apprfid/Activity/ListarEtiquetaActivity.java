@@ -259,7 +259,6 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
         dialog.setContentView(R.layout.menu_etiqueta);
 
         Button btnNovo = (Button) dialog.findViewById(R.id.btnNovaEtiqueta);
-        Button btnSeleciona = (Button) dialog.findViewById(R.id.btnSelecionarEtiqueta);
         Button btnCancelar = (Button) dialog.findViewById(R.id.btnCancelarPatrimonio);
 
         btnNovo.setOnClickListener(new View.OnClickListener() {
@@ -269,12 +268,6 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
                 intent.putExtra("tag", patrimonio.getIdentificacao());
                 startActivity(intent);
                 dialog.dismiss();
-            }
-        });
-
-        btnSeleciona.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
             }
         });
 
