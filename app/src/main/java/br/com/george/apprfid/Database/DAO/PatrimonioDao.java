@@ -13,8 +13,7 @@ import br.com.george.apprfid.Model.Patrimonio;
 public class PatrimonioDao {
     private SQLiteDatabase db;
     String[] colunas = new String[]{"_cod", "nome", "descricao", "dataentrada", "identificacao", "estado",
-            "local", "responsavel", "statusRegistro", "enviarbancoonline", "atualizarBancoOnline",
-            "idGrails"};
+            "statusRegistro", "enviarbancoonline", "atualizarBancoOnline", "idGrails"};
 
     public PatrimonioDao(SQLiteDatabase db) {
         this.db = db;
