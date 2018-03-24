@@ -1,7 +1,6 @@
 package br.com.george.apprfid.Model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Patrimonio implements Serializable {
 
@@ -10,16 +9,25 @@ public class Patrimonio implements Serializable {
     private String nome;
     private String descricao;
     private String identificacao;
-    private Date dataEntrada;
     private Boolean statusRegistro;
-    private boolean enviarBancoOnline;
-    private boolean atualizarBancoOnline;
-    private int id;
+
+    public int getCod() {
+        return cod;
+    }
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public String getDescricao() {
         return descricao;
     }
-
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
@@ -27,33 +35,15 @@ public class Patrimonio implements Serializable {
     public String getIdentificacao() {
         return identificacao;
     }
-
     public void setIdentificacao(String identificacao) {
         this.identificacao = identificacao;
     }
 
-    public Date getDataEntrada() {
-        return dataEntrada;
+    public Boolean getStatusRegistro() {
+        return statusRegistro;
     }
-
-    public void setDataEntrada(Date dataEntrada) {
-        this.dataEntrada = dataEntrada;
-    }
-
-    public int getCod() {
-        return cod;
-    }
-
-    public void setCod(int cod) {
-        this.cod = cod;
-    }
-
-    public boolean isEnviarBancoOnline() {
-        return enviarBancoOnline;
-    }
-
-    public void setEnviarBancoOnline(boolean enviarBancoOnline) {
-        this.enviarBancoOnline = enviarBancoOnline;
+    public void setStatusRegistro(Boolean statusRegistro) {
+        this.statusRegistro = statusRegistro;
     }
 
     @Override
@@ -72,35 +62,7 @@ public class Patrimonio implements Serializable {
         return identificacao != null ? identificacao.hashCode() : 0;
     }
 
-    public Boolean getStatusRegistro() {
-        return statusRegistro;
-    }
 
-    public void setStatusRegistro(Boolean statusRegistro) {
-        this.statusRegistro = statusRegistro;
-    }
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public boolean isAtualizarBancoOnline() {
-        return atualizarBancoOnline;
-    }
-
-    public void setAtualizarBancoOnline(boolean atualizarBancoOnline) {
-        this.atualizarBancoOnline = atualizarBancoOnline;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

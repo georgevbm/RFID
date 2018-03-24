@@ -31,10 +31,6 @@ public class Database {
         return new PatrimonioDao(db).buscarTodos();
     }
 
-    public List<Patrimonio> buscarPatrimoniosParaInserir() {
-        return new PatrimonioDao(db).buscarTodosParaInserir();
-    }
-
     public List<Patrimonio> buscarPatrimoniosParaAlterar() {
         return new PatrimonioDao(db).buscarTodosParaAlterar();
     }
@@ -46,15 +42,5 @@ public class Database {
     public Patrimonio buscarPatrimonioTag(String tag) {
         return new PatrimonioDao(db).buscarPorTag(tag);
     }
-
-    public void deletarTodosPatrimonios() {
-        new PatrimonioDao(db).deletarTodos();
-    }
-
-    public void deletarTodosPatrimoniosNovos() {
-        new PatrimonioDao(db).deletarTodosNovos();
-    }
-
-    public void registroEnviado(List<Patrimonio> patrimonios) { new PatrimonioDao(db).registroEnviado(patrimonios);}
     //endregion
 }

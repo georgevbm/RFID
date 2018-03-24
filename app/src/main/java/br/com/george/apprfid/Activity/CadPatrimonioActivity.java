@@ -62,37 +62,17 @@ public class CadPatrimonioActivity extends AppCompatActivity {
         btnGravar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (patrimonio == null) {
-                    patrimonio = new Patrimonio();
-                    patrimonio.setEnviarBancoOnline(true);
-                    patrimonio.setAtualizarBancoOnline(false);
-                }
-                else {
-                    if (patrimonio.isEnviarBancoOnline()) {
-                        patrimonio.setAtualizarBancoOnline(false);
-                        patrimonio.setEnviarBancoOnline(true);
-                    }
-                    else {
-                        patrimonio.setAtualizarBancoOnline(true);
-                        patrimonio.setEnviarBancoOnline(false);
-                    }
-                }
-/*
-                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                Date date = new Date();
-*/
+
                 patrimonio.setNome(txtNome.getText().toString());
                 patrimonio.setIdentificacao(txtIdentificacao.getText().toString());
                 patrimonio.setDescricao(txtDescricao.getText().toString());
 
-//                patrimonio.setDataEntrada(date);
                 if (chkAtivo.isChecked())
                     patrimonio.setStatusRegistro(true);
                 else
                     patrimonio.setStatusRegistro(false);
 
                 if (patrimonio.getCod() == 0) {
-                    patrimonio.setEnviarBancoOnline(true);
                     db.inserirPatrimonio(patrimonio);
                 }
                 else

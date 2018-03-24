@@ -9,19 +9,9 @@
 
     <include
         android:id="@+id/ToolbarTop"
-
         layout="@layout/tool_bar" />
 
-
-    <ScrollView
-        android:id="@+id/ScrollView01"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:fillViewport="true">
-
         <RelativeLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingBottom="16dp"
@@ -41,7 +31,6 @@
                     android:layout_height="fill_parent"
                     android:text="Nome"
                     android:textSize="20sp" />
-
                 <EditText
                     android:id="@+id/txtNomePatrimonio"
                     android:layout_width="fill_parent"
@@ -53,7 +42,6 @@
                     android:layout_height="fill_parent"
                     android:text="Descricao"
                     android:textSize="20sp" />
-
                 <EditText
                     android:id="@+id/txtDescricaoPatrimonio"
                     android:layout_width="fill_parent"
@@ -65,7 +53,6 @@
                     android:paddingTop="10dp"
                     android:text="Identificação"
                     android:textSize="20sp" />
-
                 <EditText
                     android:id="@+id/txtIdentificacaoPatrimonio"
                     android:layout_width="fill_parent"
@@ -78,16 +65,14 @@
                     android:layout_height="wrap_content"
                     android:text="Ativo"
                     android:textSize="20sp" />
-
             </LinearLayout>
 
-            <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_below="@+id/lvPatrimonio"
                 android:gravity="bottom">
-
 
                 <Button
                     android:id="@+id/btnGravarPatrimonio"
@@ -97,5 +82,4 @@
             </RelativeLayout>
 
         </RelativeLayout>
-    </ScrollView>
 </LinearLayout>

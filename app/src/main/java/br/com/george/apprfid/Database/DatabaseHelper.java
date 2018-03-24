@@ -19,19 +19,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //region TABELA: Patrimonio
-        db.execSQL("CREATE TABLE Patrimonio" +
+        db.execSQL("CREATE TABLE IF NOT EXISTS Patrimonio" +
                 "(" +
                 "_cod INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "Nome TEXT," +
-                "Descricao TEXT," +
-                "Identificacao TEXT," +
-                "Estado TEXT, DataEntrada TEXT," +
-                "statusRegistro TEXT," +
-                "enviarBancoOnline TEXT," +
-                "atualizarBancoOnline TEXT," +
-                "idGrails INT," +
-                "FOREIGN KEY (Local) REFERENCES Local(_id)," +
-                "FOREIGN KEY (Responsavel) REFERENCES Responsavel(_id)" +
+                "Nome VARCHAR(30)," +
+                "Descricao VARCHAR(50)," +
+                "Identificacao VARCHAR(50)," +
+                "statusRegistro VARCHAR(10)" +
                 ");");
         //endregion
     }

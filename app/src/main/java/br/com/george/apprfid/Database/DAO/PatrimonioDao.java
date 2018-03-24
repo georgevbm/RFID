@@ -12,20 +12,18 @@ import br.com.george.apprfid.Model.Patrimonio;
 
 public class PatrimonioDao {
     private SQLiteDatabase db;
-    String[] colunas = new String[]{"_cod", "nome", "descricao", "dataentrada", "identificacao", "estado",
-            "statusRegistro", "enviarbancoonline", "atualizarBancoOnline", "idGrails"};
+    String[] colunas = new String[]{"_cod", "nome", "descricao", "identificacao", "estado",
+            "statusRegistro", "idGrails"};
 
     public PatrimonioDao(SQLiteDatabase db) {
         this.db = db;
     }
 
     public void inserir(Patrimonio patrimonio) {
-        String statusRegistro;
         ContentValues val = new ContentValues();
 
         try {
             val.put("nome", patrimonio.getNome());
-            val.put("dataEntrada", String.valueOf(patrimonio.getDataEntrada()));
             val.put("descricao", patrimonio.getDescricao());
             val.put("identificacao", patrimonio.getIdentificacao());
 
@@ -33,10 +31,6 @@ public class PatrimonioDao {
                 val.put("statusRegistro", "t");
             else
                 val.put("statusRegistro", "f");
-
-            val.put("enviarBancoOnline", patrimonio.isEnviarBancoOnline() ? 1 : 0);
-            val.put("atualizarBancoOnline", patrimonio.isAtualizarBancoOnline() ? 1 : 0);
-            val.put("idGrails", patrimonio.getId());
 
             db.insert("Patrimonio", null, val);
         } catch (Exception ex) {
@@ -58,9 +52,6 @@ public class PatrimonioDao {
         else
             val.put("statusRegistro", "f");
 
-        val.put("enviarBancoOnline", patrimonio.isEnviarBancoOnline() ? 1 : 0);
-        val.put("atualizarBancoOnline", patrimonio.isAtualizarBancoOnline() ? 1 : 0);
-
         try {
             db.update("Patrimonio", val, "_cod=" + patrimonio.getCod(), null);
         } catch (Exception ex) {
@@ -75,7 +66,7 @@ public class PatrimonioDao {
     public List<Patrimonio> buscarTodos() {
         List<Patrimonio> patrimonios = new ArrayList<>();
 
-        Cursor cursor = db.query("Patrimonio", colunas, null, null, null, null, "dataEntrada ASC");
+        Cursor cursor = db.query("Patrimonio", colunas, null, null, null, null, "_cod");
 
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -94,27 +85,10 @@ public class PatrimonioDao {
         return iniciarPatrimonio(cursor, true);
     }
 
-    public List<Patrimonio> buscarTodosParaInserir() {
-        List<Patrimonio> patrimonios = new ArrayList<>();
-
-        Cursor cursor = db.query("Patrimonio", colunas, "enviarBancoOnline = 1", null, null, null, "dataEntrada ASC");
-
-        if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-
-            do {
-                //patrimonios.add(iniciarPatrimonio(cursor, false));
-                patrimonios.add(iniciarPatrimonio(cursor, true));
-            } while (cursor.moveToNext());
-        }
-
-        return patrimonios;
-    }
-
     public List<Patrimonio> buscarTodosParaAlterar() {
         List<Patrimonio> patrimonios = new ArrayList<>();
 
-        Cursor cursor = db.query("Patrimonio", colunas, "atualizarBancoOnline = 1", null, null, null, "dataEntrada ASC");
+        Cursor cursor = db.query("Patrimonio", colunas, null, null, null, null, null);
 
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -157,44 +131,7 @@ public class PatrimonioDao {
         else
             patrimonio.setStatusRegistro(false);
 
-        if (cursor.getString(9).equals("1"))
-            patrimonio.setEnviarBancoOnline(true);
-        else
-            patrimonio.setEnviarBancoOnline(false);
-
-        if (cursor.getString(10).equals("1"))
-            patrimonio.setAtualizarBancoOnline(true);
-        else
-            patrimonio.setAtualizarBancoOnline(false);
-
-        patrimonio.setId(cursor.getInt(11));
-
         return patrimonio;
     }
     //endregion
-
-    //DELETA TODOS QUE JÁ ESTÃO NA BASE ONLINE
-    public void deletarTodos() {
-        db.delete("patrimonio", "enviarBancoOnline=0", null);
-    }
-
-    public void deletarTodosNovos() {
-        db.delete("patrimonio", "enviarBancoOnline=1", null);
-    }
-
-    //INFORMA QUE O REGISTRO NÃO DEVE SER ENVIADO NOVAMENTE
-    public void registroEnviado(List<Patrimonio> patrimonios) {
-        ContentValues val = new ContentValues();
-
-        for (Patrimonio patrimonio: patrimonios) {
-            val.put("enviarBancoOnline", "0");
-            val.put("atualizarBancoOnline", "1");
-
-            try {
-                db.update("Patrimonio", val, "_cod=" + patrimonio.getCod(), null);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
 }
