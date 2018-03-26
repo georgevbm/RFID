@@ -9,7 +9,6 @@ public class Patrimonio implements Serializable {
     private String nome;
     private String descricao;
     private String identificacao;
-    private Boolean statusRegistro;
 
     public int getCod() {
         return cod;
@@ -37,13 +36,6 @@ public class Patrimonio implements Serializable {
     }
     public void setIdentificacao(String identificacao) {
         this.identificacao = identificacao;
-    }
-
-    public Boolean getStatusRegistro() {
-        return statusRegistro;
-    }
-    public void setStatusRegistro(Boolean statusRegistro) {
-        this.statusRegistro = statusRegistro;
     }
 
     @Override
