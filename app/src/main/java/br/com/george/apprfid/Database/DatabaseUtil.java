@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseUtil extends SQLiteOpenHelper{
 
     //NOME DA BASE DE DADOS
-    private static final String NOME_BANCO  = "patrimonio.db";
+    private static final String NOME_BANCO  = "rfid.db";
     //VERSÃO DO BANCO DE DADOS
     private static final int VERSAO_BANCO = 1;
 

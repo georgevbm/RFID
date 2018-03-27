@@ -2,7 +2,7 @@ package br.com.george.apprfid.Model;
 
 import java.io.Serializable;
 
-public class Patrimonio implements Serializable {
+public class Tag implements Serializable {
 
     //IDENTITY DA TABELA
     private int cod;
@@ -43,7 +43,7 @@ public class Patrimonio implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Patrimonio that = (Patrimonio) o;
+        Tag that = (Tag) o;
 
         return !(identificacao != null ? !identificacao.equals(that.identificacao) : that.identificacao != null);
 

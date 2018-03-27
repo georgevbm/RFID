@@ -350,22 +350,4 @@ public class Leitor {
             listaTags.add(tagRFId);
     }
 
-//    protected void atualizarListaTag(final String param) {
-//        Patrimonio patrimonio = null;
-//
-//        if (param == null || param.length() <= 4)
-//            return;
-//
-//        final String tagRFId = param.substring(0, param.length() - 4);
-//
-//        if (patrimonio == null) {
-//            patrimonio = new Patrimonio();
-//
-//            patrimonio.setIdentificacao(tagRFId);
-//        }
-//
-//        if (!listaPatrimonio.contains(patrimonio))
-//            listaPatrimonio.add(patrimonio);
-//    }
-
 }

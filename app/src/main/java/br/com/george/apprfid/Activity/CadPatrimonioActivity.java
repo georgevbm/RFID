@@ -11,15 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import br.com.george.apprfid.Database.PatrimonioDAO;
-import br.com.george.apprfid.Model.Patrimonio;
+import br.com.george.apprfid.Database.TagDAO;
+import br.com.george.apprfid.Model.Tag;
 import br.com.george.apprfid.R;
 
 public class CadPatrimonioActivity extends AppCompatActivity {
     private EditText txtDescricao;
     private EditText txtIdentificacao;
     private EditText txtNome;
-    private Patrimonio patrimonio;
+    private Tag tag;
     private Toolbar mToolbar;
 
     @Override
@@ -41,13 +41,13 @@ public class CadPatrimonioActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                patrimonio = new Patrimonio();
+                tag = new Tag();
 
-                patrimonio.setNome(txtNome.getText().toString());
-                patrimonio.setIdentificacao(txtIdentificacao.getText().toString());
-                patrimonio.setDescricao(txtDescricao.getText().toString());
+                tag.setNome(txtNome.getText().toString());
+                tag.setIdentificacao(txtIdentificacao.getText().toString());
+                tag.setDescricao(txtDescricao.getText().toString());
 
-                new PatrimonioDAO(CadPatrimonioActivity.this).Salvar(patrimonio);
+                new TagDAO(CadPatrimonioActivity.this).Salvar(tag);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(CadPatrimonioActivity.this);
                 builder.setMessage("Registro salvo com sucesso!")

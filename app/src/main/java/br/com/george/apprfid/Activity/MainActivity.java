@@ -12,8 +12,8 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.george.apprfid.Database.PatrimonioDAO;
-import br.com.george.apprfid.Model.Patrimonio;
+import br.com.george.apprfid.Database.TagDAO;
+import br.com.george.apprfid.Model.Tag;
 import br.com.george.apprfid.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,16 +36,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        List<Patrimonio> patrimonios = new ArrayList<>();
-        patrimonios = new PatrimonioDAO(MainActivity.this).SelecionarTodos();
+        List<Tag> tags = new ArrayList<>();
+        tags = new TagDAO(MainActivity.this).SelecionarTodos();
 
-//        new PatrimonioDAO(MainActivity.this).Excluir(2);
+//        new TagDAO(MainActivity.this).Excluir(2);
 
-        for(Patrimonio p: patrimonios){
-            Log.i("DADOS BANCO", "Cod: " + p.getCod());
-            Log.i("DADOS BANCO", "Nome: " + p.getNome());
-            Log.i("DADOS BANCO", "Descricao: " + p.getDescricao());
-            Log.i("DADOS BANCO", "Identificacao: " + p.getIdentificacao());
+        for(Tag tag: tags){
+            Log.i("DADOS BANCO", "Cod: " + tag.getCod());
+            Log.i("DADOS BANCO", "Nome: " + tag.getNome());
+            Log.i("DADOS BANCO", "Descricao: " + tag.getDescricao());
+            Log.i("DADOS BANCO", "Identificacao: " + tag.getIdentificacao());
         }
     }
 

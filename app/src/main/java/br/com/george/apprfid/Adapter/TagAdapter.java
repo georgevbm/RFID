@@ -52,18 +52,10 @@ public class TagAdapter extends BaseAdapter {
             TextView lblLocalizacao = (TextView) layout.findViewById(R.id.lblLocalizacao);
             TextView lblDescPatrimonio = (TextView) layout.findViewById(R.id.lblDescPatrimonio2);
 
-            if (tag == "") {
-                lblPatrimonio.setText(tag);
-                lblLocalizacao.setText("");
-                lblDescPatrimonio.setText("");
-                lblDescPatrimonio.setVisibility(View.GONE);
-                lblLocalizacao.setVisibility(View.GONE);
-            } else {
-                lblPatrimonio.setText(tag);
-                lblDescPatrimonio.setText(tag);
-                lblDescPatrimonio.setVisibility(View.VISIBLE);
-                lblLocalizacao.setVisibility(View.VISIBLE);
-            }
+            lblPatrimonio.setText(tag);
+            lblDescPatrimonio.setText(tag);
+            lblDescPatrimonio.setVisibility(View.VISIBLE);
+            lblLocalizacao.setVisibility(View.VISIBLE);
 
             return layout;
         } catch (Exception ex) {

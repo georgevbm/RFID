@@ -7,38 +7,38 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.george.apprfid.Model.Patrimonio;
+import br.com.george.apprfid.Model.Tag;
 
-public class PatrimonioDAO {
+public class TagDAO {
 
     DatabaseUtil databaseUtil;
 
-    public PatrimonioDAO(Context context) {
+    public TagDAO(Context context) {
         databaseUtil = new DatabaseUtil(context);
     }
 
-    public void Salvar(Patrimonio patrimonio) {
+    public void Salvar(Tag tag) {
         ContentValues contentValues = new ContentValues();
 
         /*MONTANDO OS PARAMETROS PARA SEREM SALVOS*/
-        contentValues.put("nome", patrimonio.getNome());
-        contentValues.put("descricao", patrimonio.getDescricao());
-        contentValues.put("identificacao", patrimonio.getIdentificacao());
+        contentValues.put("nome", tag.getNome());
+        contentValues.put("descricao", tag.getDescricao());
+        contentValues.put("identificacao", tag.getIdentificacao());
 
         /*EXECUTANDO INSERT DE UM NOVO REGISTRO*/
         databaseUtil.GetConexaoDataBase().insert("tags", null, contentValues);
     }
 
-    public void Atualizar(Patrimonio patrimonio) {
+    public void Atualizar(Tag tag) {
         ContentValues contentValues = new ContentValues();
 
         /*MONTA OS PARAMENTROS PARA REALIZAR UPDATE NOS CAMPOS*/
-        contentValues.put("nome", patrimonio.getNome());
-        contentValues.put("descricao", patrimonio.getDescricao());
-        contentValues.put("identificacao", patrimonio.getIdentificacao());
+        contentValues.put("nome", tag.getNome());
+        contentValues.put("descricao", tag.getDescricao());
+        contentValues.put("identificacao", tag.getIdentificacao());
 
         /*REALIZANDO UPDATE PELA CHAVE DA TABELA*/
-        databaseUtil.GetConexaoDataBase().update("tags", contentValues, "id = ?", new String[]{Integer.toString(patrimonio.getCod())});
+        databaseUtil.GetConexaoDataBase().update("tags", contentValues, "id = ?", new String[]{Integer.toString(tag.getCod())});
     }
 
     public int Excluir(int codigo) {
@@ -46,27 +46,27 @@ public class PatrimonioDAO {
         return databaseUtil.GetConexaoDataBase().delete("tags", "id = ?", new String[]{Integer.toString(codigo)});
     }
 
-    public Patrimonio GetPatrimonio(int codigo) {
+    public Tag GetPatrimonio(int codigo) {
         Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery("SELECT * FROM tags WHERE id= " + codigo, null);
 
         cursor.moveToFirst();
 
         ///CRIANDO UMA NOVA PESSOAS
-        Patrimonio patrimonio = new Patrimonio();
+        Tag tag = new Tag();
 
         //ADICIONANDO OS DADOS DA PESSOA
-        patrimonio.setCod(cursor.getInt(cursor.getColumnIndex("id")));
-        patrimonio.setNome(cursor.getString(cursor.getColumnIndex("nome")));
-        patrimonio.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
-        patrimonio.setIdentificacao(cursor.getString(cursor.getColumnIndex("identificacao")));
+        tag.setCod(cursor.getInt(cursor.getColumnIndex("id")));
+        tag.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+        tag.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
+        tag.setIdentificacao(cursor.getString(cursor.getColumnIndex("identificacao")));
 
         //RETORNANDO A PESSOA
-        return patrimonio;
+        return tag;
     }
 
-    public List<Patrimonio> SelecionarTodos() {
+    public List<Tag> SelecionarTodos() {
 
-        List<Patrimonio> patrimonios = new ArrayList<Patrimonio>();
+        List<Tag> tags = new ArrayList<Tag>();
 
         //MONTA A QUERY A SER EXECUTADA
         StringBuilder stringBuilderQuery = new StringBuilder();
@@ -83,28 +83,28 @@ public class PatrimonioDAO {
         /*POSICIONA O CURSOR NO PRIMEIRO REGISTRO*/
         cursor.moveToFirst();
 
-        Patrimonio patrimonio;
+        Tag tag;
 
         //REALIZA A LEITURA DOS REGISTROS ENQUANTO NÃO FOR O FIM DO CURSOR
         while (!cursor.isAfterLast()) {
 
             /* CRIANDO UMA NOVA PESSOAS */
-            patrimonio = new Patrimonio();
+            tag = new Tag();
 
             //ADICIONANDO OS DADOS DA PESSOA
-            patrimonio.setCod(cursor.getInt(cursor.getColumnIndex("id")));
-            patrimonio.setNome(cursor.getString(cursor.getColumnIndex("nome")));
-            patrimonio.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
-            patrimonio.setIdentificacao(cursor.getString(cursor.getColumnIndex("identificacao")));
+            tag.setCod(cursor.getInt(cursor.getColumnIndex("id")));
+            tag.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            tag.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
+            tag.setIdentificacao(cursor.getString(cursor.getColumnIndex("identificacao")));
 
             //ADICIONANDO UMA PESSOA NA LISTA
-            patrimonios.add(patrimonio);
+            tags.add(tag);
 
             //VAI PARA O PRÓXIMO REGISTRO
             cursor.moveToNext();
         }
 
         //RETORNANDO A LISTA DE PESSOAS
-        return patrimonios;
+        return tags;
     }
 }
