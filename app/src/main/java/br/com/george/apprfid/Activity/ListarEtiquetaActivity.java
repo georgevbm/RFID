@@ -20,8 +20,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.george.apprfid.Adapter.TagAdapter;
-import br.com.george.apprfid.Model.Patrimonio;
 import br.com.george.apprfid.R;
 import br.com.george.apprfid.RFID.DotR900.OnBtEventListener;
 import br.com.george.apprfid.RFID.DotR900.R900;
@@ -62,7 +64,8 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
     private ListView lstTag;
     private BaseAdapter mAdapterTag;
     private Toolbar mToolbar;
-    private Patrimonio patrimonio;
+    private String tag;
+    private List<String> tags;
     //endregion
 
     //region HANDLER
@@ -80,7 +83,7 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
                     try {
                         mAdapterTag.notifyDataSetChanged();
 
-                        lblTotalTags.setText(String.valueOf(leitor.getListaPatrimonio().size()));
+                        lblTotalTags.setText(String.valueOf(leitor.getListaTags().size()));
                     } catch (Exception ex) {
                         Log.d("ERRO", ex.getMessage());
                     }
@@ -104,8 +107,10 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
             lblTotalTags = (TextView) findViewById(R.id.lblTotalTags);
             lblTotalTags.setText("0");
             lstTag = (ListView) findViewById(R.id.lstEtiquetas);
+            tags = new ArrayList<>();
 
-            mAdapterTag = new TagAdapter(getApplicationContext(), leitor.getListaPatrimonio());
+            tags = leitor.getListaTags();
+            mAdapterTag = new TagAdapter(getApplicationContext(), tags);
 
             lstTag.setAdapter(mAdapterTag);
 
@@ -113,16 +118,8 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(ListarEtiquetaActivity.this, CadPatrimonioActivity.class);
-                    patrimonio = leitor.getListaPatrimonio().get(position);
-
-                    if (patrimonio.getCod() != 0) {
-                        intent.putExtra("patrimonio", patrimonio);
-                        startActivity(intent);
-                    }
-                    else {
-                        abrirMenu();
-                    }
-
+                    tag = leitor.getListaTags().get(position);
+                    abrirMenu();
                 }
             });
             //region Toolbar
@@ -265,7 +262,7 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ListarEtiquetaActivity.this, CadPatrimonioActivity.class);
-                intent.putExtra("tag", patrimonio.getIdentificacao());
+                intent.putExtra("tag", tag);
                 startActivity(intent);
                 dialog.dismiss();
             }

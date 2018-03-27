@@ -32,10 +32,6 @@ public class CadPatrimonioActivity extends AppCompatActivity {
         txtDescricao = (EditText) findViewById(R.id.txtDescricaoPatrimonio);
         txtIdentificacao = (EditText) findViewById(R.id.txtIdentificacaoPatrimonio);
 
-        if (getIntent().hasExtra("patrimonio")) {
-            patrimonio = (Patrimonio) getIntent().getExtras().getSerializable("patrimonio");
-        }
-
         if (getIntent().hasExtra("tag")) {
             txtIdentificacao.setText(getIntent().getExtras().getString("tag").toString());
         }

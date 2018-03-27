@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-import br.com.george.apprfid.Model.Patrimonio;
 import br.com.george.apprfid.RFID.DotR900.OnBtEventListener;
 import br.com.george.apprfid.RFID.DotR900.R900RecvPacketParser;
 
@@ -49,11 +48,11 @@ public class Leitor {
     private OnBtEventListener mBtEventListener;
     protected BluetoothSocket mBluetoothSocket;
 
-    public List<Patrimonio> getListaPatrimonio() {
-        return listaPatrimonio;
+    public List<String> getListaTags() {
+        return listaTags;
     }
 
-    private List<Patrimonio> listaPatrimonio = new ArrayList<>();
+    private List<String> listaTags = new ArrayList<>();
 
     public void setSelTag(String mSelTag) {
         this.mSelTag = mSelTag;
@@ -341,21 +340,32 @@ public class Leitor {
     //endregion
 
     protected void atualizarListaTag(final String param) {
-        Patrimonio patrimonio = null;
 
         if (param == null || param.length() <= 4)
             return;
 
         final String tagRFId = param.substring(0, param.length() - 4);
 
-        if (patrimonio == null) {
-            patrimonio = new Patrimonio();
-
-            patrimonio.setIdentificacao(tagRFId);
-        }
-
-        if (!listaPatrimonio.contains(patrimonio))
-            listaPatrimonio.add(patrimonio);
+        if (!listaTags.contains(tagRFId))
+            listaTags.add(tagRFId);
     }
+
+//    protected void atualizarListaTag(final String param) {
+//        Patrimonio patrimonio = null;
+//
+//        if (param == null || param.length() <= 4)
+//            return;
+//
+//        final String tagRFId = param.substring(0, param.length() - 4);
+//
+//        if (patrimonio == null) {
+//            patrimonio = new Patrimonio();
+//
+//            patrimonio.setIdentificacao(tagRFId);
+//        }
+//
+//        if (!listaPatrimonio.contains(patrimonio))
+//            listaPatrimonio.add(patrimonio);
+//    }
 
 }

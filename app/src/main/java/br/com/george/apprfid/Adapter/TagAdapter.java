@@ -12,26 +12,25 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.com.george.apprfid.Model.Patrimonio;
 import br.com.george.apprfid.R;
 
 public class TagAdapter extends BaseAdapter {
     Context ctx;
-    List<Patrimonio> listaPatrimonio;
+    List<String> listaTags;
 
-    public TagAdapter(Context ctx, List<Patrimonio> listaPatrimonio) {
-        this.listaPatrimonio = listaPatrimonio;
+    public TagAdapter(Context ctx, List<String> listaTags) {
+        this.listaTags = listaTags;
         this.ctx = ctx;
     }
 
     @Override
     public int getCount() {
-        return listaPatrimonio.size();
+        return listaTags.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return listaPatrimonio.get(position);
+        return listaTags.get(position);
     }
 
     @Override
@@ -47,21 +46,21 @@ public class TagAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             final RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.adapter_etiqueta, null);
 
-            Patrimonio patrimonio = listaPatrimonio.get(position);
+            String tag = listaTags.get(position);
 
             TextView lblPatrimonio = (TextView) layout.findViewById(R.id.lblPatrimonio);
             TextView lblLocalizacao = (TextView) layout.findViewById(R.id.lblLocalizacao);
             TextView lblDescPatrimonio = (TextView) layout.findViewById(R.id.lblDescPatrimonio2);
 
-            if (patrimonio.getDescricao() == null) {
-                lblPatrimonio.setText(patrimonio.getIdentificacao());
+            if (tag == "") {
+                lblPatrimonio.setText(tag);
                 lblLocalizacao.setText("");
                 lblDescPatrimonio.setText("");
                 lblDescPatrimonio.setVisibility(View.GONE);
                 lblLocalizacao.setVisibility(View.GONE);
             } else {
-                lblPatrimonio.setText(patrimonio.getNome());
-                lblDescPatrimonio.setText(patrimonio.getDescricao());
+                lblPatrimonio.setText(tag);
+                lblDescPatrimonio.setText(tag);
                 lblDescPatrimonio.setVisibility(View.VISIBLE);
                 lblLocalizacao.setVisibility(View.VISIBLE);
             }
