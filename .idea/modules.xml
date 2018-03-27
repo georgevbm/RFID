@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\georg\Desktop\TutorialRFID\AppRFID.iml" filepath="C:\Users\georg\Desktop\TutorialRFID\AppRFID.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestDatabase.iml" filepath="$PROJECT_DIR$/TestDatabase.iml" />
-      <module fileurl="file://C:\Users\georg\Desktop\TesteBD\TestDatabase\.idea\TutorialRFID.iml" filepath="C:\Users\georg\Desktop\TesteBD\TestDatabase\.idea\TutorialRFID.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\georg\Desktop\TesteBD\TestDatabase\app\app.iml" filepath="C:\Users\georg\Desktop\TesteBD\TestDatabase\app\app.iml" />
     </modules>
   </component>
 </project>

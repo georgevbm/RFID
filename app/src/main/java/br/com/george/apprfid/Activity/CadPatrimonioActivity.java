@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 
 import br.com.george.apprfid.Database.PatrimonioDAO;
@@ -20,7 +19,6 @@ public class CadPatrimonioActivity extends AppCompatActivity {
     private EditText txtDescricao;
     private EditText txtIdentificacao;
     private EditText txtNome;
-    private CheckBox chkAtivo;
     private Patrimonio patrimonio;
     private Toolbar mToolbar;
 
@@ -29,9 +27,11 @@ public class CadPatrimonioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cad_patrimonio);
 
+        // Pegando os componentes da tela de cadastro (activity_cad_patrimonio.xml)
         txtNome = (EditText) findViewById(R.id.txtNomePatrimonio);
         txtDescricao = (EditText) findViewById(R.id.txtDescricaoPatrimonio);
         txtIdentificacao = (EditText) findViewById(R.id.txtIdentificacaoPatrimonio);
+
 
         if (getIntent().hasExtra("patrimonio")) {
             patrimonio = (Patrimonio) getIntent().getExtras().getSerializable("patrimonio");

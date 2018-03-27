@@ -23,13 +23,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //region Botão RFID
+        // Recebendo o botão da tela inicial (activity_main.xml)
         Button btnIniciarRFID = (Button) findViewById(R.id.btnIniciarRFID);
+
+        // Evento de clique do botão da tela inicial
         btnIniciarRFID.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MainActivity.this, ListarBluetoothActivity.class);
                 startActivity(intent);
             }
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         List<Patrimonio> patrimonios = new ArrayList<>();
         patrimonios = new PatrimonioDAO(MainActivity.this).SelecionarTodos();
 
-        new PatrimonioDAO(MainActivity.this).Excluir(1);
+//        new PatrimonioDAO(MainActivity.this).Excluir(2);
 
         for(Patrimonio p: patrimonios){
             Log.i("DADOS BANCO", "Cod: " + p.getCod());
