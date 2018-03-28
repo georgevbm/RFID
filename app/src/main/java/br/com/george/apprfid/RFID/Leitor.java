@@ -333,7 +333,6 @@ public class Leitor {
             } else {
 
             }
-
             mConnectThread = null;
         }
     }

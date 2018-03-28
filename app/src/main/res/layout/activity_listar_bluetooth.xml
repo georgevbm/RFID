@@ -35,7 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:text="Procurar"
-            android:textColor="#FFF" />
+            android:textColor="#FFF"
+            android:background="@color/colorPrimary"/>
 
     </RelativeLayout>
 

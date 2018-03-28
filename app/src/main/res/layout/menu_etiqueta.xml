@@ -7,16 +7,24 @@
 
     <Button
         android:id="@+id/btnNovaEtiqueta"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Nova Etiqueta"
-        android:textColor="#FFF" />
+        android:textSize="17sp"
+        android:textColor="#FFF"
+        android:layout_margin="8dp"
+        android:background="@color/colorPrimary"/>
 
     <Button
         android:id="@+id/btnCancelarPatrimonio"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Cancelar"
-        android:textColor="#FFF" />
+        android:textSize="17sp"
+        android:textColor="#FFF"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimary"/>
 
 </LinearLayout>

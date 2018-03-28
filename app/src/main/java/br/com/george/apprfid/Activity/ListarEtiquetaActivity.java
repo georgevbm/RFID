@@ -111,7 +111,6 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
 
             tags = leitor.getListaTags();
             mAdapterTag = new TagAdapter(getApplicationContext(), tags);
-
             lstTag.setAdapter(mAdapterTag);
 
             lstTag.setOnItemClickListener(new AdapterView.OnItemClickListener() {
