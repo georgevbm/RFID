@@ -22,8 +22,6 @@
         <activity android:name=".Activity.ListarBluetoothActivity" />
         <activity android:name=".Activity.ListarEtiquetaActivity" />
         <activity android:name=".Activity.CadPatrimonioActivity" />
-        <activity android:name=".Activity.ListarPatrimonioActivity" />
-        <activity android:name=".Activity.PatrimonioActivity"></activity>
     </application>
 
 </manifest>

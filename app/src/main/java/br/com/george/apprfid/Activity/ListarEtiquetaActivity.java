@@ -28,7 +28,6 @@ import br.com.george.apprfid.R;
 import br.com.george.apprfid.RFID.DotR900.OnBtEventListener;
 import br.com.george.apprfid.RFID.DotR900.R900;
 
-
 public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEventListener {
     //region VARIAVEIS
     private R900 leitor;
@@ -185,7 +184,6 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
         super.onDestroy();
 
         leitor.finalize();
-
     }
 
     public static SelectMask getSelectMask() {
@@ -222,7 +220,7 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
         }
         return selMask;
     }
-    //endregion
+    //endregione
 
     //region Métodos não utilizados
     @Override
@@ -275,6 +273,5 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
         });
 
         dialog.show();
-
     }
 }
