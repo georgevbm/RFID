@@ -45,7 +45,7 @@ public class BluetoothActivity extends AppCompatActivity implements OnBtEventLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_bluetooth);
+        setContentView(R.layout.activity_bluetooth);
 
         iniciarTela();
 

@@ -95,7 +95,7 @@ public class EtiquetaActivity extends AppCompatActivity implements OnBtEventList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_etiqueta);
+        setContentView(R.layout.activity_etiqueta);
 
         if (getIntent().hasExtra("addressDispositivo")) {
             leitor = new R900(EtiquetaActivity.this, mHandler, this);

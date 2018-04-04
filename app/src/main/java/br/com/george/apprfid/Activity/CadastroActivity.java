@@ -25,10 +25,9 @@ public class CadastroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cad_patrimonio);
+        setContentView(R.layout.activity_cadastro);
 
-        // Pegando os componentes da tela de cadastro (activity_cad_patrimonio.xml)
-        txtNome = (EditText) findViewById(R.id.txtNomePatrimonio);
+        // Pegando os componentes da tela de cadastro (activity_cadastro.xml    txtNome = (EditText) findViewById(R.id.txtNomePatrimonio);
         txtDescricao = (EditText) findViewById(R.id.txtDescricaoPatrimonio);
         txtIdentificacao = (EditText) findViewById(R.id.txtIdentificacaoPatrimonio);
 
