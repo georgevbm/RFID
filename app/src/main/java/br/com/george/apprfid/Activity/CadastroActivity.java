@@ -27,7 +27,8 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        // Pegando os componentes da tela de cadastro (activity_cadastro.xml    txtNome = (EditText) findViewById(R.id.txtNomePatrimonio);
+        // Pegando os componentes da tela de cadastro (activity_cadastro.xml
+        txtNome = (EditText) findViewById(R.id.txtNomePatrimonio);
         txtDescricao = (EditText) findViewById(R.id.txtDescricaoPatrimonio);
         txtIdentificacao = (EditText) findViewById(R.id.txtIdentificacaoPatrimonio);
 
@@ -85,12 +86,6 @@ public class CadastroActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
     //endregion

@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import br.com.george.apprfid.Adapter.BluetoothAdapter;
+import br.com.george.apprfid.Adapter.BtAdapter;
 import br.com.george.apprfid.R;
 import br.com.george.apprfid.RFID.DotR900.OnBtEventListener;
 import br.com.george.apprfid.RFID.DotR900.R900;
@@ -26,7 +26,7 @@ import br.com.george.apprfid.RFID.Leitor;
 public class BluetoothActivity extends AppCompatActivity implements OnBtEventListener {
     private ListView lstBluetooth;
     private R900 leitor;
-    private BluetoothAdapter itemBluetooth;
+    private BtAdapter itemBluetooth;
     private List<BluetoothDevice> listaDispositivo;
     public final int MSG_ENCONTROU_BLUETOOTH = 1;
     private Toolbar mToolbar;
@@ -101,7 +101,7 @@ public class BluetoothActivity extends AppCompatActivity implements OnBtEventLis
         leitor = new R900(this, mHandler, this);
 
         lstBluetooth = (ListView) findViewById(R.id.lstBluetooth);
-        itemBluetooth = new BluetoothAdapter(this, leitor.getListaDispositivo());
+        itemBluetooth = new BtAdapter(this, leitor.getListaDispositivo());
         lstBluetooth.setAdapter(itemBluetooth);
 
         switch (leitor.getEstado()) {
