@@ -28,7 +28,7 @@ import br.com.george.apprfid.R;
 import br.com.george.apprfid.RFID.DotR900.OnBtEventListener;
 import br.com.george.apprfid.RFID.DotR900.R900;
 
-public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEventListener {
+public class EtiquetaActivity extends AppCompatActivity implements OnBtEventListener {
     //region VARIAVEIS
     private R900 leitor;
     public static final int MSG_ENABLE_LINK_CTRL = 10;
@@ -76,7 +76,7 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
                     onNotifyBtDataRecv();
                     break;
                 case MSG_SHOW_TOAST:
-                    Toast.makeText(ListarEtiquetaActivity.this, (String) msg.obj, Toast.LENGTH_LONG).show();
+                    Toast.makeText(EtiquetaActivity.this, (String) msg.obj, Toast.LENGTH_LONG).show();
                     break;
                 case MSG_REFRESH_LIST_TAG:
                     try {
@@ -98,7 +98,7 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
         setContentView(R.layout.activity_listar_etiqueta);
 
         if (getIntent().hasExtra("addressDispositivo")) {
-            leitor = new R900(ListarEtiquetaActivity.this, mHandler, this);
+            leitor = new R900(EtiquetaActivity.this, mHandler, this);
 
             String addressDispositivo = getIntent().getExtras().getString("addressDispositivo");
             leitor.conectar(addressDispositivo);
@@ -115,7 +115,7 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
             lstTag.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(ListarEtiquetaActivity.this, CadPatrimonioActivity.class);
+                    Intent intent = new Intent(EtiquetaActivity.this, CadastroActivity.class);
                     tag = leitor.getListaTags().get(position);
                     abrirMenu();
                 }
@@ -242,7 +242,7 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
     //endregion
 
     public void abrirMenu() {
-        final Dialog dialog = new Dialog(ListarEtiquetaActivity.this);
+        final Dialog dialog = new Dialog(EtiquetaActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.menu_etiqueta);
 
@@ -252,7 +252,7 @@ public class ListarEtiquetaActivity extends AppCompatActivity implements OnBtEve
         btnNovo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ListarEtiquetaActivity.this, CadPatrimonioActivity.class);
+                Intent intent = new Intent(EtiquetaActivity.this, CadastroActivity.class);
                 intent.putExtra("tag", tag);
                 startActivity(intent);
                 dialog.dismiss();

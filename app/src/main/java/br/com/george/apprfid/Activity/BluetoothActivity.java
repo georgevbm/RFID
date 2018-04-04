@@ -23,7 +23,7 @@ import br.com.george.apprfid.RFID.DotR900.OnBtEventListener;
 import br.com.george.apprfid.RFID.DotR900.R900;
 import br.com.george.apprfid.RFID.Leitor;
 
-public class ListarBluetoothActivity extends AppCompatActivity implements OnBtEventListener {
+public class BluetoothActivity extends AppCompatActivity implements OnBtEventListener {
     private ListView lstBluetooth;
     private R900 leitor;
     private BluetoothAdapter itemBluetooth;
@@ -71,7 +71,7 @@ public class ListarBluetoothActivity extends AppCompatActivity implements OnBtEv
                 //setEnabledLinkCtrl(false);
                 leitor.setDispositivo(listaDispositivo.get(position));
 
-                Intent intent = new Intent(ListarBluetoothActivity.this, ListarEtiquetaActivity.class);
+                Intent intent = new Intent(BluetoothActivity.this, EtiquetaActivity.class);
                 Bundle bundle = new Bundle();
 
                 bundle.putString("addressDispositivo", leitor.getDispositivo().getAddress());
@@ -154,12 +154,6 @@ public class ListarBluetoothActivity extends AppCompatActivity implements OnBtEv
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

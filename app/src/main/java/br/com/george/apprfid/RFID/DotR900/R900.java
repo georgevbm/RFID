@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Handler;
 import android.util.Log;
 
-import br.com.george.apprfid.Activity.ListarEtiquetaActivity;
+import br.com.george.apprfid.Activity.EtiquetaActivity;
 import br.com.george.apprfid.RFID.ILeitor;
 import br.com.george.apprfid.RFID.Leitor;
 
@@ -103,7 +103,7 @@ public class R900 extends Leitor implements ILeitor {
 
     public void setupOperationParameter() {
         sendInventParam(1, 5, 0);
-        final ListarEtiquetaActivity.SelectMask selMask = ListarEtiquetaActivity.getSelectMask();
+        final EtiquetaActivity.SelectMask selMask = EtiquetaActivity.getSelectMask();
         boolean bUseMask = false;
         boolean bQuerySelected = (selMask.Bits > 0);
 
@@ -116,8 +116,8 @@ public class R900 extends Leitor implements ILeitor {
             timeout *= 1000;
         }
 
-        if (ListarEtiquetaActivity.UseMask == true && selMask.Bits > 0) {
-            if (ListarEtiquetaActivity.Type == 0) {
+        if (EtiquetaActivity.UseMask == true && selMask.Bits > 0) {
+            if (EtiquetaActivity.Type == 0) {
                 if (selMask.Pattern != null && selMask.Pattern.length() != 0) {
                     sendSetSelectAction(selMask.Bits, selMask.Bank, selMask.Offset, selMask.Pattern, 0);
                     bUseMask = true;

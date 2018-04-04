@@ -19,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.ListarBluetoothActivity" />
-        <activity android:name=".Activity.ListarEtiquetaActivity" />
-        <activity android:name=".Activity.CadPatrimonioActivity" />
+        <activity android:name=".Activity.BluetoothActivity" />
+        <activity android:name=".Activity.EtiquetaActivity" />
+        <activity android:name=".Activity.CadastroActivity" />
     </application>
 
 </manifest>

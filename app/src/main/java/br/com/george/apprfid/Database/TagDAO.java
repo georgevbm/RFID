@@ -3,18 +3,16 @@ package br.com.george.apprfid.Database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import br.com.george.apprfid.Model.Tag;
 
 public class TagDAO {
 
-    DatabaseUtil databaseUtil;
+    Database database;
 
     public TagDAO(Context context) {
-        databaseUtil = new DatabaseUtil(context);
+        database = new Database(context);
     }
 
     public void Salvar(Tag tag) {
@@ -26,7 +24,7 @@ public class TagDAO {
         contentValues.put("identificacao", tag.getIdentificacao());
 
         /*EXECUTANDO INSERT DE UM NOVO REGISTRO*/
-        databaseUtil.GetConexaoDataBase().insert("tags", null, contentValues);
+        database.GetConexaoDataBase().insert("tags", null, contentValues);
     }
 
     public void Atualizar(Tag tag) {
@@ -38,16 +36,16 @@ public class TagDAO {
         contentValues.put("identificacao", tag.getIdentificacao());
 
         /*REALIZANDO UPDATE PELA CHAVE DA TABELA*/
-        databaseUtil.GetConexaoDataBase().update("tags", contentValues, "id = ?", new String[]{Integer.toString(tag.getCod())});
+        database.GetConexaoDataBase().update("tags", contentValues, "id = ?", new String[]{Integer.toString(tag.getCod())});
     }
 
     public int Excluir(int codigo) {
         //EXCLUINDO  REGISTRO E RETORNANDO O NÚMERO DE LINHAS AFETADAS
-        return databaseUtil.GetConexaoDataBase().delete("tags", "id = ?", new String[]{Integer.toString(codigo)});
+        return database.GetConexaoDataBase().delete("tags", "id = ?", new String[]{Integer.toString(codigo)});
     }
 
     public Tag GetPatrimonio(int codigo) {
-        Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery("SELECT * FROM tags WHERE id= " + codigo, null);
+        Cursor cursor = database.GetConexaoDataBase().rawQuery("SELECT * FROM tags WHERE id= " + codigo, null);
 
         cursor.moveToFirst();
 
@@ -78,7 +76,7 @@ public class TagDAO {
         stringBuilderQuery.append(" ORDER BY id           ");
 
         //CONSULTANDO OS REGISTROS CADASTRADOS
-        Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(stringBuilderQuery.toString(), null);
+        Cursor cursor = database.GetConexaoDataBase().rawQuery(stringBuilderQuery.toString(), null);
 
         /*POSICIONA O CURSOR NO PRIMEIRO REGISTRO*/
         cursor.moveToFirst();

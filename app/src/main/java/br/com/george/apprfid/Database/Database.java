@@ -4,14 +4,14 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseUtil extends SQLiteOpenHelper{
+public class Database extends SQLiteOpenHelper{
 
     //NOME DA BASE DE DADOS
     private static final String NOME_BANCO  = "rfid.db";
     //VERSÃO DO BANCO DE DADOS
     private static final int VERSAO_BANCO = 1;
 
-    public DatabaseUtil(Context context) {
+    public Database(Context context) {
         super(context, NOME_BANCO, null, VERSAO_BANCO);
     }
 

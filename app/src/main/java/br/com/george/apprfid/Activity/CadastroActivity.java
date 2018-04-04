@@ -15,7 +15,7 @@ import br.com.george.apprfid.Database.TagDAO;
 import br.com.george.apprfid.Model.Tag;
 import br.com.george.apprfid.R;
 
-public class CadPatrimonioActivity extends AppCompatActivity {
+public class CadastroActivity extends AppCompatActivity {
     private EditText txtDescricao;
     private EditText txtIdentificacao;
     private EditText txtNome;
@@ -47,9 +47,9 @@ public class CadPatrimonioActivity extends AppCompatActivity {
                 tag.setIdentificacao(txtIdentificacao.getText().toString());
                 tag.setDescricao(txtDescricao.getText().toString());
 
-                new TagDAO(CadPatrimonioActivity.this).Salvar(tag);
+                new TagDAO(CadastroActivity.this).Salvar(tag);
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(CadPatrimonioActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(CadastroActivity.this);
                 builder.setMessage("Registro salvo com sucesso!")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
