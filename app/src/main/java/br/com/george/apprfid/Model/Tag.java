@@ -54,7 +54,4 @@ public class Tag implements Serializable {
         return identificacao != null ? identificacao.hashCode() : 0;
     }
 
-
-
-
 }
