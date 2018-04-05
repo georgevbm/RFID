@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -57,6 +58,8 @@ public class BluetoothActivity extends AppCompatActivity implements OnBtEventLis
             public void onClick(View arg0) {
                 leitor.buscarBluetooth();
                 listaDispositivo = leitor.getListaDispositivo();
+                BaseAdapter adapter = new BtAdapter(BluetoothActivity.this, listaDispositivo);
+                lstBluetooth.setAdapter(adapter);
             }
         });
         //endregion

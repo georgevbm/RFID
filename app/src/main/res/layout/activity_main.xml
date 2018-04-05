@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:background="#FFF"
     android:gravity="center_horizontal"
-    tools:context=".Activity.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Activity.MainActivity">
 
     <ImageView
         android:id="@+id/ivUFScar"
@@ -30,50 +30,67 @@
             android:layout_height="100dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_weight="1"
-            android:text="Iniciar Leitor"
             android:layout_margin="8dp"
-            android:textSize="18sp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="Iniciar Leitor"
             android:textColor="@android:color/white"
-            android:background="@color/colorPrimary"/>
+            android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_weight="1"
         android:gravity="center"
-        android:layout_weight="1">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Instruções:"
-            android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="30sp"/>
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1. Ative seu bluetooth"
             android:textColor="@android:color/black"
-            android:textSize="25sp"/>
+            android:textSize="25sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2. Pareie seu celular com o HQ_UHF_READER / PIN: 1234"
+            android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="25sp"
-            android:textAlignment="center"/>
+            android:textSize="25sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3. Então é só utilizar o app"
             android:textColor="@android:color/black"
-            android:textSize="25sp"/>
+            android:textSize="25sp" />
     </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnBD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical"
+        android:text="Verificar Tags"
+        android:drawablePadding="8dp"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:background="@color/colorPrimary"
+        android:drawableLeft="@drawable/database"
+        android:padding="8dp"
+        android:textAlignment="gravity"/>
 
 
 </LinearLayout>

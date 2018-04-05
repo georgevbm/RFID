@@ -12,15 +12,15 @@ import br.com.george.apprfid.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button btnDatabase;
+    private Button btnIniciarRFID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Recebendo o botão da tela inicial (activity_main.xml)
-        Button btnIniciarRFID = (Button) findViewById(R.id.btnIniciarRFID);
-
-        // Evento de clique do botão da tela inicial
+        btnIniciarRFID = (Button) findViewById(R.id.btnIniciarRFID);
         btnIniciarRFID.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -30,16 +30,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        !------ MOSTRA CONTEÚDO SALVO NO BANCO DE DADOS NO LOGCAT ------!
-//        List<Tag> tags = new ArrayList<>();
-//        tags = new TagDAO(MainActivity.this).SelecionarTodos();
-//
-//        for(Tag tag: tags){
-//            Log.i("DADOS BANCO", "Cod: " + tag.getCod());
-//            Log.i("DADOS BANCO", "Nome: " + tag.getNome());
-//            Log.i("DADOS BANCO", "Descricao: " + tag.getDescricao());
-//            Log.i("DADOS BANCO", "Identificacao: " + tag.getIdentificacao());
-//        }
+        btnDatabase = (Button) findViewById(R.id.btnBD);
+        btnDatabase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, DatabaseActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     //region MÉTODOS NÃO UTILIZADOS
