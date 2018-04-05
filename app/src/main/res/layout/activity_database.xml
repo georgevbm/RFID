@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/toolbarTopDatabase"
-        layout="@layout/tool_bar" />
+        layout="@layout/toolbar" />
 
     <ListView
         android:id="@+id/listTagsDatabase"
